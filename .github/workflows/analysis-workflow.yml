@@ -20,7 +20,7 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
       - name: Run Security Analysis
-        uses: hybloid/sec-review-action@v0.0.1
+        uses: hybloid/sec-review-action@main
         with:
           jbai-token: ${{ secrets.JBAI_TOKEN }}
           jbai-environment: 'production'
