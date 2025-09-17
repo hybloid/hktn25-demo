@@ -1,0 +1,27 @@
+name: Security Analysis
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - name: Run Security Analysis
+        uses: hybloid/sec-review-action@v0.0.1
+        with:
+          jbai-token: ${{ secrets.JBAI_TOKEN }}
+          jbai-environment: 'production'
+          temperature: '0.0'

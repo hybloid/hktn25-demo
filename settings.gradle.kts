@@ -1,0 +1,1 @@
+rootProject.name = "hktn25-demo"
