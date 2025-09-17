@@ -14,6 +14,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
@@ -25,3 +28,4 @@ jobs:
           jbai-token: ${{ secrets.JBAI_TOKEN }}
           jbai-environment: 'production'
           temperature: '0.0'
+          branch: ${{ github.event.pull_request.base.ref }}
